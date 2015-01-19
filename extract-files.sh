@@ -2,7 +2,7 @@
 
 export VENDOR=motorola
 # List of devices in the family for ifdefs
-export FAMILY_DEVICE_LIST="mb886 xt897 xt897c"
+export FAMILY_DEVICE_LIST="mb886 xt897 xt897c xt925_jbbl"
 # Comment these out if there is no common device tree for this device
 export COMMON_DEVICE=qcom-common
 export BOARD_VENDOR=motorola-qcom
