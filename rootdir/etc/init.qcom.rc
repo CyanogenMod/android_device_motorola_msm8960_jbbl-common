@@ -171,6 +171,12 @@ on boot
     # Increase the default ksm sleep time, less cpu usage
     write /sys/kernel/mm/ksm/sleep_millisecs 500
 
+    # Default value for ZRAM size
+    write /sys/devices/virtual/block/zram0/disksize 209715200
+
+    #Swap only 1 page at a time
+    write /proc/sys/vm/page-cluster 0
+
 # msm specific files that need to be created on /data
 on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
