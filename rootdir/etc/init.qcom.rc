@@ -29,6 +29,9 @@ import init.qcom.usb.rc
 import init.target.rc
 
 on init
+    # Preload the BoringSSL wrapper
+    export LD_PRELOAD "/system/lib/libboringssl-compat.so"
+
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
