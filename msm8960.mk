@@ -61,6 +61,10 @@ PRODUCT_PACKAGES += \
     graphicsd \
     mot_boot_mode
 
+# Stlport
+PRODUCT_PACKAGES += \
+    libstlport
+
 # Misc
 PRODUCT_PACKAGES += \
     sqlite3
