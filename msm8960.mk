@@ -65,9 +65,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libstlport
 
-# BoringSSL compat symbols wrapper
+# Compatibility symbols wrappers
 PRODUCT_PACKAGES += \
-    libboringssl-compat
+    libboringssl-compat \
+    libcompat_symbols
 
 # Misc
 PRODUCT_PACKAGES += \

@@ -30,7 +30,7 @@ import init.target.rc
 
 on init
     # Preload the BoringSSL wrapper
-    export LD_PRELOAD "/system/lib/libboringssl-compat.so"
+    export LD_PRELOAD "/system/lib/libboringssl-compat.so /system/lib/libcompat_symbols.so"
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
