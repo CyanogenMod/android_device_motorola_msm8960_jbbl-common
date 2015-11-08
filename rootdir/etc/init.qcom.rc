@@ -29,6 +29,8 @@ import init.qcom.usb.rc
 import init.target.rc
 
 on init
+    export LD_SHIM_LIBS /system/lib/liblog.so|libmoto_log.so:/system/lib/hw/camera.vendor.msm8960.so|libshim_cam.so
+
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 

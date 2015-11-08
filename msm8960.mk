@@ -61,6 +61,10 @@ PRODUCT_PACKAGES += \
     graphicsd \
     mot_boot_mode
 
+# Compatibility symbols
+PRODUCT_PACKAGES += \
+    libshim_cam
+
 # Misc
 PRODUCT_PACKAGES += \
     sqlite3
