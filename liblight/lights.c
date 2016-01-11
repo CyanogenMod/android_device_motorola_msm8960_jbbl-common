@@ -139,6 +139,13 @@ rgb_to_brightness(struct light_state_t const* state)
 }
 
 static int
+lcd_to_kbd(int lcd_brightness)
+{
+	int kbd_brightness = 140 - 0.7 * lcd_brightness;
+	return kbd_brightness > 0 ? kbd_brightness : 0;
+}
+
+static int
 set_light_backlight(struct light_device_t* dev,
         struct light_state_t const* state)
 {
@@ -151,7 +158,7 @@ set_light_backlight(struct light_device_t* dev,
 	{
 		err = write_int(LCD_FILE, lcd_brightness);
 		if (!err && g_kbd_on)
-			err = write_int(KEYBOARD_FILE, lcd_brightness);
+			err = write_int(KEYBOARD_FILE, lcd_to_kbd(lcd_brightness));
 	}
 
 	g_lcd_brightness = lcd_brightness;
@@ -173,7 +180,7 @@ set_light_keyboard(struct light_device_t* dev,
 	    (!g_kbd_on && kbd_on > 0) ||
 	    (g_kbd_on > 0 && !kbd_on))
 	{
-		err = write_int(KEYBOARD_FILE, kbd_on ? g_lcd_brightness : 0);
+		err = write_int(KEYBOARD_FILE, kbd_on ? lcd_to_kbd(g_lcd_brightness) : 0);
 	}
 
 	g_kbd_on = kbd_on;
