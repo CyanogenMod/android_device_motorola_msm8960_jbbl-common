@@ -6,3 +6,8 @@ mot.iccid                  u:object_r:mmi-boot-sh_prop:s0
 manufacturedate            u:object_r:mmi-boot-sh_prop:s0
 tcmd.whisper               u:object_r:whisperd_prop:s0
 hw.whisper                 u:object_r:whisperd_prop:s0
+tcmd.cid.recover.boot      u:object_r:motbootmode_prop:s0
+tcmd.suspend               u:object_r:motbootmode_prop:s0
+tcmd.12m.test              u:object_r:motbootmode_prop:s0
+sys.chargeonly.mode        u:object_r:motbootmode_prop:s0
+pds.ready                  u:object_r:mountpds_prop:s0

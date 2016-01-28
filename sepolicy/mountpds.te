@@ -1,0 +1,10 @@
+type mountpds, domain;
+type mountpds_exec, exec_type, file_type;
+type mountpds_prop, property_type;
+init_daemon_domain(mountpds)
+
+allow mountpds shell_exec:file rx_file_perms;
+allow mountpds self:capability { dac_override };
+allow mountpds cache_file:file { write open };
+allow mountpds loop_device:blk_file { read write ioctl open };
+set_prop(mountpds, mountpds_prop)

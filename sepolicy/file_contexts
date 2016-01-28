@@ -4,6 +4,8 @@
 /system/bin/batt_health            u:object_r:batt_health_exec:s0
 /system/bin/bootmodem              u:object_r:bootmodem_exec:s0
 /system/bin/graphicsd              u:object_r:graphicsd_exec:s0
+/system/bin/mot_boot_mode          u:object_r:motbootmode_exec:s0
+/system/bin/mount_pds\.sh          u:object_r:mountpds_exec:s0
 /system/bin/qdumpd                 u:object_r:qdumpd_exec:s0
 /system/bin/whisperd               u:object_r:whisperd_exec:s0
 

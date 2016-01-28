@@ -1,0 +1,6 @@
+type motbootmode, domain;
+type motbootmode_exec, exec_type, file_type;
+type motbootmode_prop, property_type;
+init_daemon_domain(motbootmode)
+
+set_prop(motbootmode, motbootmode_prop)

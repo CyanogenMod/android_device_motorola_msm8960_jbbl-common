@@ -109,8 +109,7 @@ on post-fs
     mkdir /tombstones/dsps 0771 system system
 
     wait /dev/block/platform/msm_sdcc.1/by-name/pds
-    exec /system/bin/mount_pds.sh
-    restorecon_recursive /pds
+    start mountpds
 
     # Load FIPS kernel module
     exec /system/bin/fips_loader /system/lib/modules
@@ -292,7 +291,7 @@ on boot
     mkdir /data/system/dropbox-add 0730 system diag
 
     # Start services
-    exec /system/bin/mot_boot_mode
+    start motbootmode
 
 # Define TCP buffer sizes for ethernet
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
@@ -356,10 +355,10 @@ service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
    disabled
 
 service whisperd /system/bin/whisperd /dev/ttyHS1
-    class core
     user mot_whisper
     group mot_whisper mot_pwric
     oneshot
+    disabled
 
 service kickstart /system/bin/qcks -i /firmware/image/
     oneshot
@@ -535,9 +534,20 @@ on property:service.adb.root=1
     restart adbd
     write /sys/class/android_usb/android0/enable 1
 
-# bugreport
-service bugreport /system/bin/dumpstate -d -p -B \
-        -o /data/data/com.android.shell/files/bugreports/bugreport
-    class main
+service motbootmode /system/bin/mot_boot_mode
+    user root
+    group root
     disabled
     oneshot
+
+service mountpds /system/bin/mount_pds.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:pds.ready=1
+    mount ext3 /dev/block/loop0 /pds rw
+    restorecon_recursive /pds
+    start whisperd
+
