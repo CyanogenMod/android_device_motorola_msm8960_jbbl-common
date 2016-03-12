@@ -35,6 +35,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     MotoDoze
 
+# Camera
+PRODUCT_PACKAGES += \
+    Snap
+
 # HAL
 PRODUCT_PACKAGES += \
     camera.msm8960 \
