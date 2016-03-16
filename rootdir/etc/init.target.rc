@@ -53,6 +53,9 @@ on early-boot
 
 on charger
     mount_all fstab.qcom
+    wait /dev/block/platform/msm_sdcc.1/by-name/pds
+    exec /system/bin/mount_pds.sh
+    restorecon_recursive /pds
     trigger start-charging
 
 on start-charging
