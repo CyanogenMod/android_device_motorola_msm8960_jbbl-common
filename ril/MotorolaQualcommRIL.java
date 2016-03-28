@@ -34,9 +34,6 @@ import java.util.ArrayList;
  * {@hide}
  */
 public class MotorolaQualcommRIL extends RIL implements CommandsInterface {
-
-    private boolean setPreferredNetworkTypeSeen = false;
-
     public MotorolaQualcommRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
@@ -180,17 +177,6 @@ public class MotorolaQualcommRIL extends RIL implements CommandsInterface {
             AsyncResult.forMessage(result, null, e);
             result.sendToTarget();
         }
-    }
-
-    @Override
-    public void setPreferredNetworkType(int networkType, Message response) {
-        riljLog("MotoQcRIL: setPreferredNetworkType: " + networkType);
-        if (!setPreferredNetworkTypeSeen) {
-            riljLog("MotoQcRIL: need to reboot modem!");
-            setRadioPower(false, null);
-            setPreferredNetworkTypeSeen = true;
-        }
-        super.setPreferredNetworkType(networkType, response);
     }
 
     @Override
