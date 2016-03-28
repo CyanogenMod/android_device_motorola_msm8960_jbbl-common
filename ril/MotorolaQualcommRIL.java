@@ -186,8 +186,6 @@ public class MotorolaQualcommRIL extends RIL implements CommandsInterface {
     public void setPreferredNetworkType(int networkType, Message response) {
         riljLog("MotoQcRIL: setPreferredNetworkType: " + networkType);
         if (!setPreferredNetworkTypeSeen) {
-            riljLog("MotoQcRIL: need to reboot modem!");
-            setRadioPower(false, null);
             setPreferredNetworkTypeSeen = true;
         }
         super.setPreferredNetworkType(networkType, response);
@@ -223,5 +221,26 @@ public class MotorolaQualcommRIL extends RIL implements CommandsInterface {
             AsyncResult.forMessage(response, null, e);
             response.sendToTarget();
         }
+    }
+
+    @Override
+    protected void
+    processUnsolicited (Parcel p) {
+        int dataPosition = p.dataPosition(); // save off position within the Parcel
+        int response;
+
+        response = p.readInt();
+
+        switch(response) {
+            case RIL_UNSOL_RIL_CONNECTED:
+                if (!setPreferredNetworkTypeSeen) {
+                    Rlog.v(RILJ_LOG_TAG, "MotoQcRIL: connected, setting network type to " + mPreferredNetworkType);
+                    setPreferredNetworkType(mPreferredNetworkType, null);
+                }
+                break;
+        }
+
+        p.setDataPosition(dataPosition);
+        super.processUnsolicited(p);
     }
 }
