@@ -76,7 +76,6 @@ etc/firmware/a300_pm4.fw
 # Media
 lib/libI420colorconvert.so
 lib/libgemini.so
-lib/libmmparser.so
 lib/libmm-color-convertor.so
 
 # Media firmware
