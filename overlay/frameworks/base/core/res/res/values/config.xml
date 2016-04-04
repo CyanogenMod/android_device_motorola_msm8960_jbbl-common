@@ -68,4 +68,8 @@
          proportionally to the smaller buckets. -1 keeps the default. -->
     <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">122880</integer>
 
+    <!-- Integer indicating amount of time failed networks are blacklisted for the purpose
+         of network switching in milliseconds -->
+    <integer translatable="false" name="config_wifi_network_switching_blacklist_time">0</integer>
+
 </resources>
