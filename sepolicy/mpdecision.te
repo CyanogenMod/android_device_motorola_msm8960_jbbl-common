@@ -4,4 +4,4 @@ type_transition mpdecision system_data_file:file mpctl_data_file;
 allow mpdecision system_data_file:dir { search add_name write };
 allow mpdecision mpctl_data_file:file { create open append };
 allow mpdecision shell_exec:file rx_file_perms;
-allow mpdecision system_file:file {rx_file_perms execmod};
+#allow mpdecision system_file:file {rx_file_perms execmod};

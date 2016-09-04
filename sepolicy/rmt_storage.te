@@ -1,8 +1,8 @@
-typeattribute rmt_storage rmt_placeholder;
+#typeattribute rmt_storage rmt_placeholder;
 
 allow rmt_storage firmware_file:dir r_dir_perms;
 allow rmt_storage firmware_file:file r_file_perms;
-allow rmt_storage kmem_device:chr_file rw_file_perms;
+#allow rmt_storage kmem_device:chr_file rw_file_perms;
 allow rmt_storage self:capability sys_rawio;
 allow rmt_storage shell_exec:file rx_file_perms;
-allow rmt_storage system_file:file {rx_file_perms execmod};
+#allow rmt_storage system_file:file {rx_file_perms execmod};

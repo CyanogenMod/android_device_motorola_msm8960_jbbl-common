@@ -5,4 +5,4 @@ allow sensors apk_data_file:sock_file create_file_perms;
 allow sensors input_device:chr_file r_file_perms;
 allow sensors input_device:dir r_dir_perms;
 allow sensors shell_exec:file rx_file_perms;
-allow sensors system_file:file {rx_file_perms execmod};
+#allow sensors system_file:file {rx_file_perms execmod};
