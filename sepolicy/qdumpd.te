@@ -6,5 +6,5 @@ allow qdumpd qdump_data_file:dir create_dir_perms;
 allow qdumpd qdump_data_file:file create_file_perms;
 allow qdumpd qdumpd_device:chr_file rw_file_perms;
 allow qdumpd shell_exec:file rx_file_perms;
-allow qdumpd system_file:file {rx_file_perms execmod};
+#allow qdumpd system_file:file {rx_file_perms execmod};
 allow qdumpd ramdump_device:chr_file rw_file_perms;
