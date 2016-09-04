@@ -1,2 +1,2 @@
-allow netmgrd system_file:file execmod;
+#allow netmgrd system_file:file execmod;
 allow netmgrd self:packet_socket { write bind create read };
