@@ -9,4 +9,4 @@ allow mm-qcamerad socket_device:sock_file w_file_perms;
 allow mm-qcamerad system_data_file:sock_file create_file_perms;
 allow mm-qcamerad system_data_file:dir { write remove_name add_name };
 allow mm-qcamerad shell_exec:file rx_file_perms;
-allow mm-qcamerad system_file:file {rx_file_perms execmod};
+#allow mm-qcamerad system_file:file {rx_file_perms execmod};

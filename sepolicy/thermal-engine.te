@@ -1,6 +1,6 @@
 allow thermal-engine self:capability { chown net_admin sys_nice };
 allow thermal-engine shell_exec:file rx_file_perms;
-allow thermal-engine system_file:file {rx_file_perms execmod};
+#allow thermal-engine system_file:file {rx_file_perms execmod};
 allow thermal-engine self:netlink_kobject_uevent_socket { read bind setopt };
 allow thermal-engine sysfs:file w_file_perms;
 allow thermal-engine sysfs_devices_system_cpu:file rw_file_perms;

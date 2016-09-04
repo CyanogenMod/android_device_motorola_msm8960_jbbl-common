@@ -1,1 +1,1 @@
-allow time_daemon system_file:file execmod;
+#allow time_daemon system_file:file execmod;
