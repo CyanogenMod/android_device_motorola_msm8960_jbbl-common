@@ -31,6 +31,7 @@
 #define LOG_TAG "LocSvc_afw"
 
 #include <hardware/gps.h>
+#include <hardware/gps_internal.h>
 #include <dlfcn.h>
 #include <loc_eng.h>
 #include <loc_log.h>
