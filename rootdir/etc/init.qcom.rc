@@ -244,6 +244,7 @@ on property:vold.decrypt=trigger_restart_framework
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
+    group wakelock
 
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh
     class core
@@ -272,15 +273,16 @@ service qmiproxy /system/bin/qmiproxy
 service qmuxd /system/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth gps qcom_diag
+    group radio audio bluetooth gps qcom_diag wakelock
 
 service netmgrd /system/bin/netmgrd
     class main
+    group radio system wakelock
 
 service sensors /system/bin/sensors.qcom
     class late_start
     user root
-    group root
+    group root wakelock
     disabled
 
 on property:ro.use_data_netmgrd=false
@@ -382,13 +384,20 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service ril-daemon1 /system/bin/rild -c 1
+service cameraserver /system/bin/cameraserver
     class main
-    socket rild1 stream 660 root radio
-    socket rild-debug1 stream 660 radio system
+    user cameraserver
+    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct system
+    ioprio rt 4
+    writepid /dev/cpuset/foreground/tasks
+
+service ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket sap_uim_socket1 stream 660 bluetooth bluetooth
+    socket rild-debug stream 660 radio system
     user root
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_oncrpc diag qcom_diag log
+    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log readproc wakelock
 
 # Limit to SoC reset (1) and independent SSR (3)
 on property:persist.sys.ssr.restart_level=1
