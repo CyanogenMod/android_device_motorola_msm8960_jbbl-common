@@ -1,0 +1,5 @@
+# sdcardfs for external sdcard
+allow appdomain vfat:dir create_dir_perms;
+allow appdomain vfat:file create_file_perms;
+allow appdomain sdcard_posix:dir create_dir_perms;
+allow appdomain sdcard_posix:file create_file_perms;
