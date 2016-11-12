@@ -277,6 +277,7 @@ service qmuxd /system/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps qcom_diag
+    setenv LD_PRELOAD /system/lib/libqmuxdwrapper.so
 
 service netmgrd /system/bin/netmgrd
     class main
