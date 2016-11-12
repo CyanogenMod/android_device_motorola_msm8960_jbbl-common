@@ -75,6 +75,10 @@ PRODUCT_PACKAGES += \
     libmotou \
     libshim_cam
 
+# qmuxd workaround wrapper
+PRODUCT_PACKAGES += \
+    libqmuxdwrapper
+
 # Misc
 PRODUCT_PACKAGES += \
     sqlite3
